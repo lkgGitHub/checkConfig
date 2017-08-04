@@ -312,7 +312,6 @@ for dirpath, dirnames, filenames in os.walk(config_file):
                     continue
                 else:
                     line = line.split("=")
-                    print filename
                     s = {'file': filename, 'name': line[0].strip(), 'value': line[1].strip()}
                     if s not in properties_configs:
                         properties_configs.append(s)
