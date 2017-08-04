@@ -1,0 +1,52 @@
+#1.带“#”后的一行将不会读取；2格式为配置名称=可能配置value:对该值描述:安全等级;可能配置value:对该值描述:安全等级（“;”“:”等符号均为英文状态，配置值可以一直增加)
+#3.一般情况下配置配置的name，value可根据实际业务改变的可以设置为空。
+#hadoop
+hadoop.security.authentication=simple:无认证（默认值）没有开启kerberos:dangerous;kerberos:启用Kerberos认证:safe
+hadoop.security.authorization=false:Hadoop的服务级授权功能处于关闭状态:warning;true:启用应用服务级别授权:safe
+hadoop.rpc.protection=authentication:仅认证（默认）:warning;integrity:认证和进行完整性检查 :warning;privacy:认证，完整性检查和数据加密。设置此属性会启用SASL来验证数据传输协议。如果启用，则dfs.datanode.address必须使用非特权端口，dfs.http.policy必须设置为HTTPS_ONLY，并且在启动DataNode进程时必须未定义 HADOOP_SECURE_DN_USER环境变量:safe
+security.client.protocol.acl=:ClientProtocol的ACL，由用户代码通过DistributedFileSystem使用:safe;*:ClientProtocol的ACL未开启:warning
+security.client.datanode.protocol.acl=:	ClientDatanodeProtocol的ACL，用于块恢复的客户端到Datanode协议:safe;*:ClientDatanodeProtocol的ACL未开启:warning
+security.datanode.protocol.acl=:DatanodeProtocol的ACL，由datanode用于与namenode进行通信:safe;*:DatanodeProtocol的ACL未开启:warning
+security.inter.datanode.protocol.acl=:InterDatanodeProtocol的ACL，用于更新生成时间戳的interan datanode协议:safe;*:InterDatanodeProtocol的ACL未开启:warning
+security.namenode.protocol.acl=:NamenodeProtocol的ACL，辅助节点使用的协议与namenode通信:safe;*:NamenodeProtocol的ACL未开启:warning
+security.job.client.protocol.acl=:JobSubmissionProtocol的ACL，由作业客户端用于与资源管理器通信以提交作业，查询作业状态等:safe;*:由作业客户端用于与资源管理器通信以提交作业，JobSubmissionProtocol的ACL未开启:warning
+security.job.task.protocol.acl=:TaskUmbilicalProtocol的ACL，由map和reduce任务用于与父节点管理器通信:safe;*:TaskUmbilicalProtocol的ACL未开启:warning
+security.refresh.policy.protocol.acl=:RefreshAuthorizationPolicyProtocol的ACL，由dfsadmin和rmadmin命令使用以刷新有效的安全策略:safe;*:RefreshAuthorizationPolicyProtocol的ACL未开启:warning
+security.ha.service.protocol.acl=:HAAdmin使用的HAService协议的ACL，用于管理namenode的活动和待机状态:safe;*:HAAdmin使用的HAService协议的ACL未开启:warning
+hadoop.ssl.keystores.factory.class=org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory:KeyStoresFactory实现使用:safe
+hadoop.http.authentication.kerberos.principal=:当使用Kerberos认证时,表明被用在http endpoint上的Kerberos principal:safe
+dfs.web.authentication.kerberos.principal=:web认证开启kerberos:safe
+#hdfs
+dfs.datanode.kerberos.principal=:datanode开启了kerberos:safe
+dfs.namenode.kerberos.principal=:namenode开启了kerberos:safe
+dfs.encrypt.data.transfer=false:是否加密传输数据:warning;true:开启加密传输数据:safe
+dfs.encrypt.data.transfer.algorithm=:使用系统上配置的JCE默认值，观察dfs.encrypt.data.transfer是否开启:warning;3des:加密算法为3des:safe;rc4:加密算法为rc4:safe
+dfs.encrypt.data.transfer.cipher.suites=没有配置此参数:默认情况下，这是未指定的不使用AES:warning;AES/CTR/NoPadding:激活AES加密:safe
+hadoop.http.filter.initializers=:开启web控制台的身份验证:safe
+dfs.http.policy=HTTP_ONLY:使用http协议访问web界面:warning;HTTP_AND_HTTPS:使用http协议和https协议访问web界面:warning;HTTPS_ONLY:只能通过https进行访问:safe
+dfs.block.access.token.enable=默认值没有配置:没有HDFS块访问令牌:warning;true:为安全操作启用HDFS块访问令牌:safe
+dfs.permissions.enabled=false:默认为false，hdfs没有开启权限控制:warning;true:开启权限控制:safe
+dfs.namenode.acls.enabled=false:默认为false禁用ACL，NameNode拒绝所有尝试设置ACL:warning;true:启用对ACL的支持:safe
+#yarn
+yarn.resourcemanager.principal=:resourcemanager开启了kerberos:safe
+yarn.nodemanager.principal=:nodemanager开启了kerberos:safe
+#mapreduce
+dfs.journalnode.kerberos.principal=:journalnode开启kerberos:safe
+mapreduce.jobhistory.keytab=:jobhistory开启kerberos:safe
+mapreduce.jobhistory.http.policy=HTTP_ONLY:使用http协议访问web界面:warning;HTTP_AND_HTTPS:使用http协议和https协议访问web界面:warning;HTTPS_ONLY:只能通过https进行访问:safe
+#hive
+hive.server2.authentication=kerberos:hiveServer2开启kerberos:safe;KERBEROS:hiveServer2开启kerberos:safe
+hive.metastore.kerberos.principal=:metastore开启了kerberos:safe
+hive.metastore.authorization.storage.checks=false:Hive将不会阻止没有权限的用户进行表删除操作:dangerous;true:true代表Hive将会阻止没有权限的用户进行表删除操作:safe
+hive.security.authorization.enabled=false:没启Hive身份认证:dangerous;true:开启Hive身份认证:safe
+hive.authorization.msck.enabled=false:华为平台新增配置，执行msck时否要进行权限检查，默认false不检查:warning;true:华为平台新增配置，执行msck时进行权限检查:safe
+#hbase
+hbase.master.kerberos.principal=:hbaseMaster开启kerberos:safe
+hbase.regionserver.kerberos.principal=:hbaseRegionserver开启kerberos:safe
+hbase.security.authentication=:默认空没有开启kerberos:dangerous;kerberos:开启kerberos:safe
+hbase.rpc.protection=:默认为空没有开启hbase加密通信:warning;privacy:hbase加密通信(大约有10%的性能损失):safe;authentication:hbase开启rpc认证:safe
+hbase.security.authentication.ui=:默认空没有开启kerberos认证web界面:dangerous;kerberos:开启kerberos认证web界面:safe
+hbase.regionserver.keytab.file=:regionserver开启了kerberos:safe
+hbase.security.authentication=simple:无认证（默认值）没有开启:dangerous;kerberos:启用Kerberos认证:safe
+hbase.security.authorization=false:Hbase的服务级授权功能处于关闭状态:warning;true:启用应用服务级别授权:safe
+hbase.security.exec.permission.checks=false:没有此选项，所有用户将直接访问execute endpoint coprocessors:dangerous;true:启用HBase授权:safe

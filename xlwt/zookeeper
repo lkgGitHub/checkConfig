@@ -1,0 +1,3 @@
+quorum.auth.enableSasl=false:没有开启SASL的quorum身份认证:dangerous;true:开启SASL身份认证:safe
+quorum.auth.learnerRequireSasl=false:进行LE但不进行任何身份验证:waring;true:进行身份验证，成功后进行LE:safe
+quorum.auth.kerberos.servicePrincipal=:开启kerberos认证:safe

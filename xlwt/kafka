@@ -1,0 +1,24 @@
+# server.properties
+ssl.keystore.location=:broker端需要的SSL的keystore地址:safe
+ssl.truststore.location=:broker端需要的SSL的truststore地址:safe
+security.inter.broker.protocol=PLAINTEXT:默认值，broker内部通讯:warning;SSL:启动SSL用于broker内部通讯:safe;SASL_PLAINTEXT:启动SASL(Kerberos)用于broker内部通讯:safe;SASL_SSL:启动SASL(Kerberos)用于broker内部通讯:safe
+security.protocol=SASL_PLAINTEXT:使用SASL(Kerberos)加密协议:safe;SSL:使用SSL加密协议:safe
+sasl.kerberos.service.name=:配置SASL端口和SASL机制:safe
+sasl.mechanism.inter.broker.protocol=GSSAPI:配置SASL端口和SASL机制:safe
+sasl.enabled.mechanisms=GSSAPI:配置SASL端口和SASL机制:safe
+sasl-ssl.port=:sasl端口:safe
+ssl.port=:ssl端口:safe
+allow.everyone.if.no.acl.found=false:默认情况下，如果资源R没有关联acl，除了超级用户，没有用户允许访问:safe;true:允许所有人访问:warning
+sasl.kerberos.principal.to.local.rules=:kerberos规则:safe
+zookeeper.set.acl=false:未用对broker的Zookeeper认证:warning;true:启用对broker的Zookeeper认证:safe
+authorizer.class.name=kafka.security.auth.SimpleAclAuthorizer:kafka认证和acl:safe
+# 选配
+ssl.client.auth=none:broker端需要的SSL配置:safe;required:客户端身份验证是必需的:safe
+ssl.cipher.suites=:broker端需要的SSL配置。密码套件是利用TLS或SSL网络协议的网络连接的安全设置。是认证，加密，MAC和密钥交换算法的组合:safe
+ssl.enabled.protocols=:接收来自客户端列出的SSL协议，注意，不推荐在生产中使用SSL，推荐使用TLS:safe
+ssl.keystore.type=JKS:broker端需要的SSL配置,可选配置:safe
+ssl.truststore.type=JKS:broker端需要的SSL配置，可选配置:safe
+# 华为的有配置，但没找到依据
+# ssl.mode.enable=false
+kerberos.domain.name=hadoop.hadoop.com:kerberos验证配置项:safe
+sasl.kerberos.kinit.cmd=:kerberos验证配置项:safe

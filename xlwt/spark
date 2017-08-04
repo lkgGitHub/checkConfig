@@ -1,0 +1,9 @@
+spark.acls.enable=false:没有启用Sparkacls:dangerous;true:启用则会检查用户是否具有查看或修改作业的访问权限:safe
+spark.authenticate=false:没有开启验证其内部连接，只有在YARN上运行才有效:dangerous;true:开启验证其内部连接:safe
+spark.authenticate.secret=:如果spark运行在yarn上，则可忽略此配置。设置Spark用于在组件之间进行身份验证的密钥:warning;true:设置Spark用于在组件之间进行身份验证的密钥:safe
+spark.authenticate.enableSaslEncryption=false:认证时未启用加密通信:warning;true:启用认证时启用加密通信。此选项目前仅支持块传输服务:safe
+spark.modify.acls=:默认情况下，只有启动Spark作业的用户才可以修改它（例如杀死它）:safe;*:任何用户都可以访问它来进行修改:dangerous
+spark.ui.filters=:通过使用固定的javax servlet过滤器实现webUI的控制访问:safe
+spark.ssl.enabled=false:没有在所有支持的协议上启用SSL连接:dangerous;true:在所有支持的协议上启用SSL连接:safe
+spark.history.kerberos.enabled=false:是否使用kerberos方式登录访问HistoryServer，对于持久层位于安全集群的HDFS上是有用的:warning;true:使用kerberos方式登录访问HistoryServer:safe
+spark.history.ui.acls.enable=false:授权用户查看应用程序信息的时候是否检查acl。如果启用，只有应用程序所有者和spark.ui.view.acls指定的用户可以查看应用程序信息:warning;true:检查acl,只有应用程序所有者和spark.ui.view.acls指定的用户可以查看应用程序信息:safe
